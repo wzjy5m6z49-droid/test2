@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-
 @font-face {
   font-family: 'MontserratCustom';
   src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
@@ -22,20 +21,14 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 90px;
   background: transparent;
   overflow: hidden;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .heading-part {
   width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
   line-height: 1;
 }
@@ -47,7 +40,7 @@ body {
   letter-spacing: 0.18em;
   color: #333333;
   line-height: 1;
-  margin: 0;
+  margin: 0 0 6px 0;
   padding: 0;
 }
 
@@ -55,20 +48,16 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 8px;
-  padding-bottom: 6px;
+  margin: 0;
+  padding: 0;
 }
 
 .underline {
-  width: 220px;
+  width: 100%;
   height: 2px;
   background: #333333;
   transform: scaleX(0);
   transform-origin: center;
-}
-
-/* 再発火アニメーション */
-.underline.animate {
   animation: lineGrow 0.9s ease-out forwards;
 }
 
@@ -80,51 +69,15 @@ body {
     transform: scaleX(1);
   }
 }
-
 </style>
 </head>
 
 <body>
-
-<div class="heading-part">
-
-  <div class="title">
-    NEWS
+  <div class="heading-part">
+    <div class="title">NEWS</div>
+    <div class="underline-wrap">
+      <div class="underline"></div>
+    </div>
   </div>
-
-  <div class="underline-wrap">
-    <div class="underline"></div>
-  </div>
-
-</div>
-
-<script>
-
-const underline = document.querySelector('.underline');
-const target = document.querySelector('.heading-part');
-
-const observer = new IntersectionObserver((entries) => {
-
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-
-      underline.classList.remove('animate');
-
-      void underline.offsetWidth;
-
-      underline.classList.add('animate');
-    }
-
-  });
-
-}, {
-  threshold: 0.5
-});
-
-observer.observe(target);
-
-</script>
-
 </body>
 </html>
