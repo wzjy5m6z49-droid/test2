@@ -53,11 +53,15 @@ body {
 }
 
 .underline {
-  width: 100%;
+  width: 220px;
   height: 2px;
   background: #333333;
   transform: scaleX(0);
   transform-origin: center;
+}
+
+/* 発火用クラス */
+.underline.animate {
   animation: lineGrow 0.9s ease-out forwards;
 }
 
@@ -73,11 +77,40 @@ body {
 </head>
 
 <body>
-  <div class="heading-part">
-    <div class="title">NEWS</div>
-    <div class="underline-wrap">
-      <div class="underline"></div>
-    </div>
+
+<div class="heading-part">
+  <div class="title">NEWS</div>
+
+  <div class="underline-wrap">
+    <div class="underline"></div>
   </div>
+</div>
+
+<script>
+const underline = document.querySelector('.underline');
+const target = document.querySelector('.heading-part');
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      underline.classList.remove('animate');
+
+      void underline.offsetWidth;
+
+      underline.classList.add('animate');
+    }
+
+  });
+
+}, {
+  threshold: 0.5
+});
+
+observer.observe(target);
+</script>
+
 </body>
 </html>
